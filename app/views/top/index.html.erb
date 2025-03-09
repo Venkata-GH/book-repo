@@ -1,0 +1,23 @@
+
+<h1>Welcome to <%= Settings.app_name %>.</h1>
+
+<br />
+
+Count : <%= @count %><br />
+
+<br />
+
+<table>
+<% @tweets.each.with_index(1){ |tweet, index| %>
+  <tr>
+    <td><%= index %></td>
+    <td><%= link_to_unless( tweet.screen_name.blank?, image_tag( tweet.profile_image_url, size: "20x20" ), "https://twitter.com/#!/#{tweet.screen_name}", target: "_blank" ) %></td>
+    <td><%= tweet.id_str %></td>
+    <td><%= tweet.screen_name %></td>
+    <td><%= tweet.post %></td>
+    <td><%= tweet.tweet_at.blank? ? "" : tweet.tweet_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+  </tr>
+<% } %>
+</table>
+
+<br />
